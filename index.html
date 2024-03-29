@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Compositional Image Decomposition with Diffusion Models">
+  <!-- <meta name="keywords" content="Nerfies, D-NeRF, NeRF"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compositional Image Decomposition with Diffusion Models</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+      
+  <script type="text/javascript"
+          src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Compositional Image Decomposition with Diffusion Models</h1>
+          <h2 class="title is-3">Supplemental Results</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-justified">
+          <p>
+            We sincerely thank the reviewers for their valuable feedback and insightful suggestions. 
+            In response to their inquiries, we are pleased to showcase additional results to further address their concerns and provide a comprehensive understanding of our work.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        
+        <div class="content has-text-justified has-text-centered">
+          <h3 class="title" id="fig1">Figure 1. Higher-Resolution 256x256 CelebA-HQ</h3>
+          <p>
+          We offer further qualitative results on higher-resolution images. 
+          As shown in the figure, our approach adeptly decomposes 256x256 images into distinct components, providing a good reconstruction quality.
+          </p>
+          <img class="img-fluid" src="materials/fig1/celeb_256_figure.png"
+             alt="256x256 Celeb"/>
+
+        </div>
+        
+        <div class="content has-text-justified has-text-centered">
+          <h3 class="title" id="fig2a">Figure 2a. Additive Components on CelebA-HQ</h3>
+          <p>
+            To demonstrate the impact of each component, we present composition results by incrementally adding one component at a time. 
+            As depicted in the images below, the composition steadily converges towards the original outcome with the addition of each component.
+          </p>
+          
+          <div class="row align-items-end">
+            <div class="col">
+              <img src="materials/fig2/celeb_additive.png" class="img-fluid rounded float-left"
+              alt="Additive components on Celeb."/>
+            </div>
+          </div>
+
+          <h3 class="title" id="fig2b">Figure 2b. Additive Components on CLEVR</h3>
+          <p>
+          In CLEVR (below), incrementally adding one component at a time mirrors the process of generating one object at a time in the results. 
+          Our method can iteratively incorporate each object represented by the learned local factors until it reconstructs the original image's object setup.
+          </p>
+          <img src="materials/fig2/clevr_additive_figure.png" width=500px class="rounded mx-auto d-block" alt="Additive components on CLEVR." width="500px"/>
+          
+        </div>
+
+        <div class="content has-text-justified has-text-centered" id="fig3">
+          <h3 class="title ">Figure 3. Impact of Latent Encoder Architecture</h3>
+          <p>
+            We showcase the effects of a latent encoder architecture.
+            As shown in the qualitative results on the same input image, encoder with different depths learn similar decomposed factors more or less, including shadows, background, etc.
+          </p>
+          <img src="materials/fig3/vkitti_depth_figure.png" width=500px class="rounded mx-auto d-block" alt="Encoder depth." width="800px"/>
+          
+        
+        </div>
+        
+        <div class="content has-text-justified has-text-centered" id="fig4">
+          <h3 class="title ">Figure 4. Systematic Selection of Number of Components</h3>
+          <p>
+          As a proxy for determining the optimal number of components for decomposition, we conduct reconstruction training by employing a weighted combination of K components, 
+          where $K$ is sufficiently large and the weights are learned, rather than simply averaging $K$ components. 
+          Subsequently, we utilize the weight values to identify which $K'$ components were less significant, indicated by their lower weights. The remaining $K - K'$ components may offer a more suitable fit for the dataset.
+          For simplicity, we used $K = 6$ in the example below and we found that model learns to differentiate importance of each component.
+          </p>
+          <img src="materials/fig4/falcor_weights_figure.png" width=500px class="rounded mx-auto d-block"
+              alt="Falcor with weights."/>
+        </div>
+
+        <div class="content has-text-justified has-text-centered" id="fig5">
+          <h3 class="title">Figure 5. Predicting Noise</h3>
+          <p>
+            The method fails to decompose images into meaningful concepts if predicting the noise $\epsilon_0$ directly. 
+            Instead, the components appear to be randomly generated instances from the dataset domain. As shown in the Figure, on CelebA-HQ, 
+            the model components are other human faces. 
+            
+            We hypothesize this is because, while the components' reconstruction of $\epsilon_0$ may be accurate,
+            the denoising process on an individual noise component is still akin to sampling from the original image domain.
+          </p>
+          <img src="materials/fig5/celeb_eps_figure.png" width=500px class="rounded mx-auto d-block" alt="Predicting epsilon." width="700px"/>
+        </div>
+        
+        <div class="content has-text-justified has-text-centered" id="fig6">
+          <h3 class="title ">Figure 6. Decomposition with Pretrained Stable Diffusion
+          </h3>
+          <p>
+            We employed Pretrained Stable Diffusion for Decomposition and empirically observed that pretrained models largely fail to decompose images accurately. 
+            Figure 6 illustrates this observation, where the components decomposed from KITTI images seldom represent meaningful factors.
+          </p>
+          <img src="materials/fig6/KITTI_Pretrained_SD.png" width=500px class="rounded mx-auto d-block" alt="Predicting epsilon." />
+        </div>
+        
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8 has-text-centered">
+        <div class="content">
+          <p>
+            This website is forked from the
+						<a href="https://nerfies.github.io/">Nerfies</a>
+						<a href="https://github.com/nerfies/nerfies.github.io">source code</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
