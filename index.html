@@ -64,7 +64,7 @@
         <div class="content has-text-justified">
           <p>
             We sincerely thank the reviewers for their valuable feedback and insightful suggestions. 
-            In response to their inquiries, we are pleased to showcase additional results to further address their concerns and provide a comprehensive understanding of our work.
+            In response to their inquiries, we showcase additional results to further address their concerns and provide a comprehensive understanding of our work.
           </p>
         </div>
       </div>
@@ -76,10 +76,10 @@
         <div class="content has-text-justified has-text-centered">
           <h3 class="title" id="fig1">Figure 1. Higher-Resolution 256x256 CelebA-HQ</h3>
           <p>
-          We offer further qualitative results on higher-resolution images. 
-          As shown in the figure, our approach adeptly decomposes 256x256 images into distinct components, providing a good reconstruction quality.
+          We offer additional qualitative results on higher-resolution images. 
+          As shown in the figure, our approach effectively decomposes 256x256 images into distinct components, providing good reconstruction quality.
           </p>
-          <img class="img-fluid" src="materials/fig1/celeb_256_figure.png"
+          <img class="img-fluid" src="materials/fig1/celeb_256_compressed.png"
              alt="256x256 Celeb"/>
 
         </div>
@@ -87,13 +87,13 @@
         <div class="content has-text-justified has-text-centered">
           <h3 class="title" id="fig2a">Figure 2a. Additive Components on CelebA-HQ</h3>
           <p>
-            To demonstrate the impact of each component, we present composition results by incrementally adding one component at a time. 
-            As depicted in the images below, the composition steadily converges towards the original outcome with the addition of each component.
+            To demonstrate the impact of each component, we present composition results produced by incrementally adding one component at a time. 
+            Below, on the left-hand side, we show the factors discovered for each input image. On the right-hand side, we iteratively add one factor to our latent vector subset and generate the composition results. We see that composition images steadily approach the original input image with the addition of each component. 
           </p>
           
           <div class="row align-items-end">
             <div class="col">
-              <img src="materials/fig2/celeb_additive.png" class="img-fluid rounded float-left"
+              <img src="materials/fig2/celeb_additive_figure.png" class="img-fluid rounded float-left"
               alt="Additive components on Celeb."/>
             </div>
           </div>
@@ -103,7 +103,7 @@
           In CLEVR (below), incrementally adding one component at a time mirrors the process of generating one object at a time in the results. 
           Our method can iteratively incorporate each object represented by the learned local factors until it reconstructs the original image's object setup.
           </p>
-          <img src="materials/fig2/clevr_additive_figure.png" width=500px class="rounded mx-auto d-block" alt="Additive components on CLEVR." width="500px"/>
+          <img src="materials/fig2/clevr_additive_figure.png" width=400px class="rounded mx-auto d-block" alt="Additive components on CLEVR." width="500px"/>
           
         </div>
 
@@ -111,7 +111,7 @@
           <h3 class="title ">Figure 3. Impact of Latent Encoder Architecture</h3>
           <p>
             We showcase the effects of a latent encoder architecture.
-            As shown in the qualitative results on the same input image, encoder with different depths learn similar decomposed factors more or less, including shadows, background, etc.
+            As shown in the qualitative results on the same input image, encoders with different depths still learn similar decomposed factors, including shadows, background, etc.
           </p>
           <img src="materials/fig3/vkitti_depth_figure.png" width=500px class="rounded mx-auto d-block" alt="Encoder depth." width="800px"/>
           
@@ -121,10 +121,10 @@
         <div class="content has-text-justified has-text-centered" id="fig4">
           <h3 class="title ">Figure 4. Systematic Selection of Number of Components</h3>
           <p>
-          As a proxy for determining the optimal number of components for decomposition, we conduct reconstruction training by employing a weighted combination of K components, 
+          As a proxy for determining the optimal number of components for decomposition, we conduct reconstruction training by employing a weighted combination of $K$ components, 
           where $K$ is sufficiently large and the weights are learned, rather than simply averaging $K$ components. 
-          Subsequently, we utilize the weight values to identify which $K'$ components were less significant, indicated by their lower weights. The remaining $K - K'$ components may offer a more suitable fit for the dataset.
-          For simplicity, we used $K = 6$ in the example below and we found that model learns to differentiate importance of each component.
+          Subsequently, we utilize the weight values to identify some $K'$ components that were less significant, indicated by their lower weights. The remaining $K - K'$ components may offer a more suitable fit for the dataset.
+          For simplicity, we used $K = 6$ in the example below and found that model learns to differentiate the importance of each component.
           </p>
           <img src="materials/fig4/falcor_weights_figure.png" width=500px class="rounded mx-auto d-block"
               alt="Falcor with weights."/>
