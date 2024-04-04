@@ -153,6 +153,27 @@
           </p>
           <img src="materials/fig6/KITTI_Pretrained_SD.png" width=500px class="rounded mx-auto d-block" alt="Predicting epsilon." />
         </div>
+
+
+        <div class="content has-text-justified has-text-centered" id="fig7">
+          <h3 class="title ">Figure 7. Decomposition with Liu et al.
+          </h3>
+          <p>
+            We experiment with using the method from Liu et al. 2023 [4] on a single training image to decompose CLEVR. As shown below, since the method only optimizes the word embedding in the text encoder without updating the U-net, 
+            it does not generate objects that look similar to the training set. This suggests that the pretrained Stable Diffusion model does not always give faithful priors for factor representation learning tasks.
+          </p>
+          <img src="materials/fig7/decomposed_factors_liu.png" width=500px class="rounded mx-auto d-block" alt="Predicting epsilon." />
+        </div>
+
+        <div class="content has-text-justified has-text-centered" id="fig8">
+          <h3 class="title ">Figure 8. Decomposition with Pretrained Stable Diffusion
+          </h3>
+          <p>
+            We test a variant of our approach with pretrained Stable Diffusion on the CLEVR dataset. We can see that using the pretrained model did not help find meaningful factors; Figure 6 shows similar results on the KITTI dataset. 
+            Note that Figure 7 and Figure 8 appear different because Liu et al. 2023 [4] optimizes text embeddings while our approach optimizes representations encoded from the image.
+          </p>
+          <img src="materials/fig8/decomposed_factors_pretrained_sd.png" width=500px class="rounded mx-auto d-block" alt="Predicting epsilon." />
+        </div>
         
 
       </div>
